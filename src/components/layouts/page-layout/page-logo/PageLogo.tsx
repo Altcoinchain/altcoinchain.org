@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { PageLogoStyled } from './page-logo.styled';
+import LogoIcon from '@/components/atoms/icons/LogoIcon';
 
 type PageLogoProps = {
     src: string | StaticImageData;
@@ -10,7 +11,7 @@ type PageLogoProps = {
 export const PageLogo: FC<PageLogoProps> = ({ src, label }) => {
     return (
         <PageLogoStyled>
-            <Image src={src} alt={`${label} logo`} width={72} height={72} />
+            <LogoIcon />
             <h1 className={'label'}>{label}</h1>
         </PageLogoStyled>
     );

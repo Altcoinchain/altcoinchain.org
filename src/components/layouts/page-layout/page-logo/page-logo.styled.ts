@@ -2,17 +2,40 @@ import styled from 'styled-components';
 
 export const PageLogoStyled = styled.div`
     display: flex;
-    width: 14rem;
     align-items: center;
-    justify-content: space-between;
     pointer-events: none;
+    margin: 0.5rem 0 0.75rem;
+    min-width: 24rem;
+
+    @media (min-width: ${(props) => props.theme.breakpoints.md}) {
+        min-width: auto;
+        width: 14rem;
+        margin: 0;
+    }
+
+    svg {
+      position: absolute;
+        flex-grow: 0;
+        width: 2rem;
+        height: 2rem;
+
+        @media (min-width: ${(props) => props.theme.breakpoints.md}) {
+          position: relative;
+            width: 6rem;
+            height: 6rem;
+        }
+    }
 
     h1 {
-        color: black;
-        font-size: 1.8rem;
+        flex-grow: 1;
+        color: ${(props) => props.theme.main.color};
+        font-size: 1.5rem;
+        line-height: 1.5rem;
         font-weight: bolder;
         text-transform: uppercase;
-        display: inline-block;
+        display: inline-flex;
+        justify-content: center;
         text-align: center;
+        transition: color 250ms ease-in-out;
     }
 `;

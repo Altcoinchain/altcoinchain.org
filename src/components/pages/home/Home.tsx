@@ -1,15 +1,15 @@
 import { FC } from 'react';
-import { PageContainerStyled } from '@/common/styles/page-container.styled';
 import descriptors from "@/common/descriptors";
 import {useIntl} from "react-intl";
-import Image from "next/image";
+import LogoIcon from "@/components/atoms/icons/LogoIcon";
+import {HomeStyled} from "@/components/pages/home/home.styled";
 
 export const Home: FC = () => {
     const { formatMessage } = useIntl();
 
-    return <PageContainerStyled>
-        <Image src={'/images/altcoinchain.png'} alt={'Altcoin chain logo'} width={360} height={360} />
+    return <HomeStyled>
+        <LogoIcon width={120} height={120}  />
         <h2>{formatMessage(descriptors.home.title)}</h2>
         <p>{formatMessage(descriptors.home.description)}</p>
-    </PageContainerStyled>;
+    </HomeStyled>;
 };
