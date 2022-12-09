@@ -1,9 +1,7 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import { PageDefaultProps } from './common/types';
 
-type PageStyledProps = {
-    openMenu: boolean;
-};
-export const PageLayoutStyled = styled.div<PageStyledProps>`
+export const PageLayoutStyled = styled.div<PageDefaultProps>`
     display: flex;
     position: fixed;
     overflow: hidden;
@@ -12,17 +10,15 @@ export const PageLayoutStyled = styled.div<PageStyledProps>`
 
     > menu {
         display: flex;
-
         position: absolute;
         top: 0;
         bottom: 0;
-
         flex-direction: column;
         z-index: +1000;
         flex-grow: 0;
         padding: 0.5rem;
-        color: ${(props) => props.theme.main.color};
-        background-color: ${(props) => props.theme.main.background};
+        color: ${(props) => props.theme.color.main.color};
+        background-color: ${(props) => props.theme.color.main.background};
         width: ${(props) => (props.openMenu ? '100%' : '3rem')};
         transition: width 250ms ease-in-out, background-color 250ms ease-in-out;
 
@@ -37,6 +33,27 @@ export const PageLayoutStyled = styled.div<PageStyledProps>`
             opacity: ${(props) => (props.openMenu ? '1' : '0')};
             transition: opacity 250ms ease-in-out;
         }
+
+        ul {
+            li {
+                display: flex;
+                margin: 1rem 0;
+
+                a {
+                    justify-self: center;
+                    width: 100%;
+                    display: inline-flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    gap: 0.25rem;
+
+                    &.active {
+                        font-weight: bolder;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
     }
 
     > .content {
@@ -49,82 +66,10 @@ export const PageLayoutStyled = styled.div<PageStyledProps>`
             padding-left: 0;
         }
 
-        header {
-            display: flex;
-            flex-grow: 0;
-            min-height: 4.625rem;
-            align-items: center;
-            padding: 0.5rem;
-            color: ${(props) => props.theme.main.color};
-            background-color: ${(props) => props.theme.main.background};
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            transition: background-color 250ms ease-in-out;
-
-            @media (min-width: ${(props) => props.theme.breakpoints.md}) {
-                padding: 0.75rem 2rem;
-            }
-
-            .header {
-                &__left {
-                    display: flex;
-                    flex-grow: 0;
-                    &__trigger {
-                        z-index: +1000;
-                        cursor: pointer;
-                        display: inline-flex;
-                        transform: ${(props) =>
-                            props.openMenu ? 'rotate(180deg)' : 'rotate(0)'};
-                        transition: transform 250ms ease-in-out;
-
-                        ${(props) =>
-                            props.openMenu
-                                ? css`
-                                      position: absolute;
-                                      right: 1rem;
-                                      top: 1rem;
-
-                                      @media (min-width: ${(props) =>
-                                              props.theme.breakpoints.md}) {
-                                          position: relative;
-                                          right: auto;
-                                          top: auto;
-                                      }
-                                  `
-                                : ``}
-                    }
-                }
-
-                &__right {
-                    display: flex;
-                    flex-grow: 1;
-                    justify-content: flex-end;
-
-                    button {
-                        position: inherit;
-                        color: ${(props) => props.theme.main.background};
-                        background-color: ${(props) => props.theme.main.color};
-                        transition: background-color 250ms ease-in-out;
-                        width: auto;
-                        max-width: 6rem;
-
-                        &:hover {
-                            background-color: darkgray;
-                        }
-
-                        @media (min-width: ${(props) =>
-                                props.theme.breakpoints.md}) {
-                            padding: 0 1rem;
-                            max-width: 10rem;
-                        }
-                    }
-                }
-            }
-        }
-
         main {
             flex-grow: 1;
-            background-color: ${(props) => props.theme.main.background};
-            color: ${(props) => props.theme.main.color};
+            background-color: ${(props) => props.theme.color.main.background};
+            color: ${(props) => props.theme.color.main.color};
             box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
             transition: background-color 250ms ease-in-out,
                 color 250ms ease-in-out;
@@ -137,7 +82,7 @@ export const PageLayoutStyled = styled.div<PageStyledProps>`
             gap: 1rem;
             align-items: center;
             padding: 0.5rem;
-            background-color: ${(props) => props.theme.main.background};
+            background-color: ${(props) => props.theme.color.main.background};
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             transition: background-color 250ms ease-in-out;
 
@@ -146,7 +91,7 @@ export const PageLayoutStyled = styled.div<PageStyledProps>`
             }
 
             a {
-                color: ${(props) => props.theme.main.color};
+                color: ${(props) => props.theme.color.main.color};
                 transition: color 250ms ease-in-out;
                 font-size: 1rem;
 

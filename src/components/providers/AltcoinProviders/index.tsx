@@ -16,7 +16,7 @@ import { PageProps } from '@/common/interfaces';
 
 const altcoinChain: Chain = {
     id: 2330,
-    name: 'Altcoin chain',
+    name: 'Altcoinchain',
     network: 'altcoinchain',
     nativeCurrency: {
         decimals: 18,
@@ -24,7 +24,7 @@ const altcoinChain: Chain = {
         symbol: 'ALT',
     },
     rpcUrls: {
-        default: 'http://154.12.237.243:8547',
+        default: 'https://rpc0.altcoinchain.org/rpc',
     },
     blockExplorers: {
         default: {

@@ -8,14 +8,12 @@ interface ThemeState {
 
 export const useThemeStore = create<ThemeState>()(
     devtools(
-        persist(
-            (set) => ({
-                theme: true,
-                toggleTheme: () => set((state) => ({ theme: !state.theme })),
-            }),
-            {
-                name: 'theme-store',
-            }
-        )
+        (set) => ({
+            theme: true,
+            toggleTheme: () => set((state) => ({ theme: !state.theme })),
+        }),
+        {
+            name: 'theme-store',
+        }
     )
 );

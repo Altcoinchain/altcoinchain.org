@@ -19,7 +19,7 @@ const MenuTriggerIcon = ({
             width={width}
             height={height}
             viewBox="0 0 32 19"
-            fill={theme.main.color}
+            fill={theme.color.main.color}
             xmlns="http://www.w3.org/2000/svg"
         >
             <title id="title-electricity-icon">
