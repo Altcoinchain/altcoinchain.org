@@ -1,16 +1,17 @@
 import { useIntl } from 'react-intl';
+import {useTheme} from "styled-components";
+import {CustomTheme} from "@/components/providers/AltcoinProviders/themes";
 
 type MenuTriggerIconProps = {
     width?: number;
     height?: number;
-    color?: 'black';
 };
 
 const MenuTriggerIcon = ({
-    color = 'black',
     width = 32,
     height = 19,
 }: MenuTriggerIconProps) => {
+    const theme = useTheme() as CustomTheme;
     const { formatMessage } = useIntl();
 
     return (
@@ -18,7 +19,7 @@ const MenuTriggerIcon = ({
             width={width}
             height={height}
             viewBox="0 0 32 19"
-            fill={color}
+            fill={theme.main.color}
             xmlns="http://www.w3.org/2000/svg"
         >
             <title id="title-electricity-icon">

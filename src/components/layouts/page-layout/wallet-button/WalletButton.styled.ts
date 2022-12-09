@@ -6,7 +6,7 @@ export const StyledContentButton = styled.button`
     position: absolute;
     top: 0.4rem;
     right: 0.4rem;
-    z-index: +10000;
+    z-index: 1;
     font-family: Verdana, sans-serif;
     font-size: 0.8rem;
     white-space: nowrap;
