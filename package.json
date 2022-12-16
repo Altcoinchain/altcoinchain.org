@@ -13,6 +13,7 @@
         "mock": "json-server --watch ./mock/db.json -m ./node_modules/json-server-auth --port 4000"
     },
     "dependencies": {
+        "@coinpaprika/api-nodejs-client": "^1.2.0",
         "@fortawesome/fontawesome-svg-core": "6.2.1",
         "@fortawesome/free-brands-svg-icons": "6.2.1",
         "@fortawesome/free-solid-svg-icons": "6.2.1",
@@ -30,6 +31,7 @@
         "react-dom": "18.2.0",
         "react-intl": "6.2.5",
         "styled-components": "5.3.6",
+        "use-debounce": "^9.0.2",
         "wagmi": "^0.8.10",
         "zustand": "4.1.4"
     },

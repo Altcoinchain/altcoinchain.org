@@ -1,3 +1,29 @@
+export interface Colors {
+    main: {
+        color: `#${string}`;
+        background: `#${string}`;
+    },
+    logo: {
+        stroke: `#${string}`;
+        fill: `#${string}`;
+    }
+}
+
+export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type Breakpoints = {
+    [key in Breakpoint]: string;
+};
+
+export interface Spacing {
+    xxs: string;
+    xs: string;
+    sm: string;
+    md: string;
+    lg: string;
+    xl: string;
+    xxl: string;
+}
+
 const breakpoints = {
     xs: '0',
     sm: '600px',
@@ -6,28 +32,49 @@ const breakpoints = {
     xl: '1920px',
 };
 
-export const lightTheme = {
-    main: {
-        color: '#0D0D0D',
-        background: '#FFFFFF'
-    },
-    logo: {
-        lines: '#0D0D0D',
-        background: '#FFFFFF',
+const spacing = {
+    xxs: '1rem',
+    xs: '1rem',
+    sm: '1rem',
+    md: '1rem',
+    lg: '1rem',
+    xl: '1rem',
+    xxl: '1rem',
+}
+
+export interface CustomTheme {
+    breakpoints: Breakpoints;
+    color: Colors;
+    spacing: Spacing;
+}
+
+export const lightTheme: CustomTheme = {
+    color: {
+        main: {
+            color: '#0D0D0D',
+            background: '#FFFFFF'
+        },
+        logo: {
+            stroke: '#0D0D0D',
+            fill: '#FFFFFF',
+        }
     },
     breakpoints,
+    spacing
 };
 
-export const darkTheme = {
-    main: {
-        color: '#FFFFFF',
-        background: '#0D0D0D'
-    },
-    logo: {
-        lines: '#FFFFFF',
-        background: '#0D0D0D',
+export const darkTheme: CustomTheme = {
+    color: {
+
+        main: {
+            color: '#f2f2f2',
+            background: '#262423'
+        },
+        logo: {
+            stroke: '#f4f1ed',
+            fill: '#262423',
+        },
     },
     breakpoints,
+    spacing
 };
-
-export type CustomTheme = typeof lightTheme | typeof darkTheme;

@@ -4,6 +4,7 @@ export const ALTCOIN_PRIVATE_ROUTES: Record<string, string> = {
 
 const ALTCOIN_PUBLIC_ROUTES: Record<string, string> = {
     home: '/',
+    walt: '/walt',
 };
 
 export const ALTCOIN_ROUTES: Record<string, string> = {

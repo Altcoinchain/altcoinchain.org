@@ -12,10 +12,18 @@ import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { PageLayoutStyled } from '@/components/layouts/page-layout/page-layout.styled';
 import MenuTriggerIcon from '@/components/atoms/icons/MenuTriggerIcon';
 import { PageLogo } from '@/components/layouts/page-layout/page-logo/PageLogo';
-import WalletButton from '@/components/layouts/page-layout/wallet-button/WalletButton';
+import WalletButton from '@/components/layouts/page-layout/header/wallet-button/WalletButton';
 import { ThemeProvider } from 'styled-components';
-import {useThemeStore} from "@/components/providers/zustand/theme";
-import {darkTheme, lightTheme} from "@/components/providers/AltcoinProviders/themes";
+import { useThemeStore } from '@/components/providers/zustand/theme';
+import {
+    darkTheme,
+    lightTheme,
+} from '@/components/providers/AltcoinProviders/themes';
+import LogoIcon from '@/components/atoms/icons/LogoIcon';
+import { useRouter } from 'next/router';
+import { ALTCOIN_ROUTES } from '@/common/constants/routes.const';
+import { HeaderLayout } from '@/components/layouts/page-layout/header/Header';
+import { useMenuStore } from '@/components/providers/zustand/menu';
 
 type MenuItem = {
     label: string;
@@ -35,13 +43,10 @@ type PageProps = {
 };
 
 export const PageLayout: FC<PageProps> = ({ children }) => {
-    const theme = useThemeStore((state) => state.theme)
-    const toggleTheme = useThemeStore((state) => state.toggleTheme)
-    const [openMenu, setOpenMenu] = useState<boolean>(false);
-    const toggleMenu = (e: any) => {
-        e.preventDefault();
-        setOpenMenu(!openMenu);
-    };
+    const theme = useThemeStore((state) => state.theme);
+    const toggleTheme = useThemeStore((state) => state.toggleTheme);
+    const openMenu = useMenuStore((state) => state.openMenu);
+    const { route } = useRouter();
 
     return (
         <ThemeProvider theme={theme ? lightTheme : darkTheme}>
@@ -51,25 +56,25 @@ export const PageLayout: FC<PageProps> = ({ children }) => {
                         src={'/images/altcoinchain.png'}
                         label={'Altcoin chain'}
                     />
-                    <button onClick={toggleTheme} >X</button>
+                    <button onClick={toggleTheme}>X</button>
+                    <ul>
+                        <li>
+                            <Link
+                                href={ALTCOIN_ROUTES.walt}
+                                className={
+                                    route === ALTCOIN_ROUTES.walt
+                                        ? 'active'
+                                        : undefined
+                                }
+                            >
+                                <LogoIcon width={24} height={24} />
+                                Walt
+                            </Link>
+                        </li>
+                    </ul>
                 </menu>
                 <div className={'content'}>
-                    <header>
-                        <div className={'header__left'}>
-                            <div
-                                className={'header__left__trigger'}
-                                onClick={toggleMenu}
-                                onKeyDown={toggleMenu}
-                                role={'button'}
-                                tabIndex={0}
-                            >
-                                <MenuTriggerIcon />
-                            </div>
-                        </div>
-                        <div className={'header__right'}>
-                            <WalletButton />
-                        </div>
-                    </header>
+                    <HeaderLayout openMenu={openMenu} />
                     <main>{children}</main>
                     <footer>
                         <Link
